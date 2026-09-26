@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Grocery Billing System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">Grocery Billing</div>
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Dashboard</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Billing</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="dashboard">
+        <div class="welcome">
+          <h1>Welcome to Your Grocery Billing System</h1>
+          <p>Manage your store inventory and generate bills efficiently</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card total-sales">
+            <div class="stat-value" id="totalSales">0.00</div>
+            <div class="stat-label">Total Sales</div>
+          </div>
+          <div class="stat-card items-sold">
+            <div class="stat-value" id="itemsSold">0</div>
+            <div class="stat-label">Items Sold</div>
+          </div>
+          <div class="stat-card orders">
+            <div class="stat-value" id="orders">0</div>
+            <div class="stat-label">Orders</div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <div class="action-card">
+            <h3>Add Products</h3>
+            <p>Add new items to your inventory</p>
+            <button class="btn-secondary">Go to Products</button>
+          </div>
+          <div class="action-card">
+            <h3>Create Bill</h3>
+            <p>Start a new billing session</p>
+            <button class="btn-primary">Start Billing</button>
+          </div>
+          <div class="action-card">
+            <h3>View History</h3>
+            <p>Check previous bills and reports</p>
+            <button class="btn-secondary">View History</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="billing-area" id="billingArea" style="display: none;">
+        <div class="bill-header">
+          <h2>Create New Bill</h2>
+          <div class="bill-info">
+            <div>
+              <span>Bill #</span>
+              <span id="billNumber">-</span>
+            </div>
+            <div>
+              <span>Date:</span>
+              <span id="billDate">-</span>
+            </div>
+          </div>
+          <button class="btn-close" onclick="hideBillingArea()">← Back</button>
+        </div>
+
+        <div class="products-catalog">
+          <h3>Product Catalog</h3>
+          <div class="search-bar">
+            <input type="text" id="productSearch" placeholder="Search products...">
+          </div>
+          <div class="products-grid" id="productsGrid">
+            <!-- Products will be loaded here -->
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <h3>Shopping Cart</h3>
+          <div cart-items class="cart-items" id="cartItems">
+            <!-- Cart items will be added here -->
+          </div>
+          <div class="cart-total">
+            <span>Total</span>
+            <span class="total-amount">₹0.00</span>
+          </div>
+          <button class="btn-primary" onclick="generateInvoice()">Generate Invoice</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Grocery Billing System &copy; 2024</p>
+    </footer>
+  </div>
+
+  <script src="js/app.js">
